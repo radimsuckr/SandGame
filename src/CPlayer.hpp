@@ -15,11 +15,11 @@ enum {
 class CPlayer : public CEntity {
     public:
         CPlayer(CGameScreen* gameScreen, CEvent* event, int x, int y);
-        ~CPlayer();
-        void render(int cameraX, int cameraY);
-        void update();
+		~CPlayer();
+        void render(int cameraX, int cameraY) override;
+        void update() override;
         void init();
-        void loadImage(char filename[]);
+        void loadImage();
         void move();
         void jump();
         unsigned char getFacing();

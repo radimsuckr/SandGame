@@ -3,13 +3,13 @@
 #include <allegro5/allegro.h>
 
 CTile::CTile(ALLEGRO_BITMAP* bitmap, int x, int y) : CEntity(x, y) {
-    m_image = bitmap;
+    this->m_image = bitmap;
 }
 
 void CTile::render(int cameraX, int cameraY) {
-    al_draw_bitmap(m_image, (float) this->getPosX() - cameraX, (float) this->getPosY() - cameraY, 0);
+    al_draw_bitmap(
+		this->m_image, static_cast<float>(this->getPosX()) - cameraX, static_cast<float>(this->getPosY()) - cameraY, 0
+	);
 }
 
-void CTile::update() {
-
-}
+void CTile::update() {}

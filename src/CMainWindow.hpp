@@ -1,5 +1,4 @@
-#ifndef _CMAINWINDOW_H_
-    #define _CMAINWINDOW_H_
+#pragma once
 
 struct ALLEGRO_DISPLAY;
 class CEvent;
@@ -19,7 +18,7 @@ class CMainWindow {
         void exit();
         CEvent* getEvent();
         ALLEGRO_DISPLAY* getDisplay();
-        double  getMiliseconds();
+        double getMiliseconds();
         void changeScreenTo(int screenCode);
 
     private:
@@ -31,8 +30,6 @@ class CMainWindow {
         CScreen* m_gameScreen;
         CScreen* m_aboutScreen;
 
-        void    update();
-        void    render();
+        void update();
+        void render();
 };
-
-#endif

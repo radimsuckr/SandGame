@@ -1,16 +1,17 @@
 #pragma once
 
 #include "CEntity.hpp"
+#include <allegro5/allegro.h>
 
 class CGameScreen;
 
 class CWaterBlob : public CEntity {
     public:
         CWaterBlob(CGameScreen* gameScreen, int x, int y);
-        void render(int cameraX, int cameraY);
-        void update();
+        void render(int cameraX, int cameraY) override;
+        void update() override;
         void move();
-        void hurt(int damage);
+        void hurt(int damage) override;
 
     private:
         ALLEGRO_BITMAP* m_image;

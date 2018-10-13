@@ -11,13 +11,17 @@
 #include <iostream>
 
 CMainWindow::CMainWindow() {
-    m_isRunning = false;
-    m_display = NULL;
-    m_event = NULL;
+    this->m_isRunning = false;
+    this->m_display = nullptr;
+    this->m_event = nullptr;
+	this->m_activeScreen = nullptr;
+	this->m_pauseMenu = nullptr;
+	this->m_gameScreen = nullptr;
+	this->m_aboutScreen = nullptr;
 }
 
 int CMainWindow::execute() {
-    if (this->init() == false) {
+    if (!this->init()) {
         return -1;
     }
 
@@ -28,7 +32,7 @@ int CMainWindow::execute() {
     int FPS = 0;
     int ticks = 0;
 
-    while (m_isRunning) {
+    while (this->m_isRunning) {
         double nowTime = this->getMiliseconds();
         unprocessedTicks += (nowTime - lastTime) / msPerTick;
         lastTime = nowTime;
@@ -49,10 +53,12 @@ int CMainWindow::execute() {
             resetTime = this->getMiliseconds();
         }
     }
+
+	return 0;
 }
 
 bool CMainWindow::init() {
-    if (!al_init()) {
+    if (al_init() == 0) {
         std::cerr << "Can not init allegro." << std::endl;
         return false;
     }
@@ -63,7 +69,7 @@ bool CMainWindow::init() {
     }
 
     m_display = al_create_display(800, 600);
-    if (m_display == NULL) {
+    if (m_display == nullptr) {
         std::cerr << "Allegro can not make display." << std::endl;
         return false;
     }
@@ -77,9 +83,9 @@ bool CMainWindow::init() {
     al_register_event_source(m_event->getEventQueue(), al_get_keyboard_event_source());
     m_isRunning = true;
 
-    m_gameScreen = new CGameScreen(this);
+    m_gameScreen = new CGameScreen(this, nullptr);
     m_pauseMenu = new CPauseScreen(this, m_gameScreen);
-    m_aboutScreen = new CAboutScreen(this);
+    m_aboutScreen = new CAboutScreen(this, nullptr);
     m_activeScreen = m_gameScreen;
     
     return true;
@@ -108,11 +114,16 @@ void CMainWindow::render() {
 void CMainWindow::changeScreenTo(int screenCode) {
     switch (screenCode) {
         case 0:
-            m_activeScreen = m_gameScreen; break;
+            m_activeScreen = m_gameScreen;
+			break;
         case 1:
-            m_activeScreen = m_pauseMenu; break;
+            m_activeScreen = m_pauseMenu;
+			break;
         case 2:
-            m_activeScreen = m_aboutScreen; break;
+            m_activeScreen = m_aboutScreen;
+			break;
+		default:
+			break;
     }
 }
 
@@ -131,4 +142,3 @@ ALLEGRO_DISPLAY* CMainWindow::getDisplay() {
 double CMainWindow::getMiliseconds() {
     return al_get_time() * 1000.0;
 }
-

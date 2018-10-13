@@ -9,8 +9,8 @@ class CMainWindow;
 class CPauseScreen : public CScreen {
     public:
         CPauseScreen(CMainWindow* mainWindow, CScreen* parent);
-        void render();
-        void update();
+        void render() override;
+        void update() override;
 
     private:
         std::string* m_options;

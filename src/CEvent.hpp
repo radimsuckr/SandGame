@@ -1,5 +1,4 @@
-#ifndef _CEVENT_H_
-    #define _CEVENT_H_
+#pragma once
 
 #include <allegro5/allegro.h>
 
@@ -14,17 +13,15 @@ struct Key {
 
 class CEvent {  
     public:
-        CEvent(CMainWindow* mainWindow);
+        explicit CEvent(CMainWindow* mainWindow);
         ALLEGRO_EVENT_QUEUE* getEventQueue();
         void processEvents();
         void toggleKey(int keyCode, bool isDown);
         bool isKeyDown(int keyCode);
-        bool isKeyDownTimed(int keyCode, int msTime = 500);
+        bool isKeyDownTimed(int keyCode, int msTime);
 
     private:
         ALLEGRO_EVENT_QUEUE* m_eventQueue;
         CMainWindow* m_mainWindow;
         Key* m_keys;
 };
-
-#endif

@@ -5,50 +5,49 @@
 #include <allegro5/allegro_primitives.h>
 
 CSandBall::CSandBall(CGameScreen* gameScreen, CPlayer* player) {
-    m_posX = player->getPosX() + (player->getFacing() == FACING_RIGHT ? 64 : 0);
-    m_posY = player->getPosY() + 32;
-    m_xVelocity = player->getFacing() == FACING_RIGHT ? 5 : -5;
-    m_yVelocity = 0.03;
-    m_ticksAlive = 0;
-    m_canCollide = false;
-    m_gameScreen = gameScreen;
-    m_player = player;
+    this->m_posX = player->getPosX() + (player->getFacing() == FACING_RIGHT ? 64 : 0);
+    this->m_posY = player->getPosY() + 32;
+    this->m_xVelocity = player->getFacing() == FACING_RIGHT ? 5 : -5;
+    this->m_yVelocity = 0.03;
+    this->m_ticksAlive = 0;
+    this->m_canCollide = false;
+    this->m_gameScreen = gameScreen;
+    this->m_player = player;
 }
 
 void CSandBall::render(int cameraX, int cameraY) {
-    al_draw_filled_circle(this->getPosX() - cameraX, this->getPosY() - cameraY,
-            5, al_map_rgb(150, 131, 87));
+    al_draw_filled_circle(this->getPosX() - cameraX, this->getPosY() - cameraY, 5, al_map_rgb(150, 131, 87));
 }
 
 void CSandBall::update() {
-    m_posX += m_xVelocity;
-    m_posY += m_yVelocity;
-    m_yVelocity += 0.02;
+    this->m_posX += this->m_xVelocity;
+    this->m_posY += this->m_yVelocity;
+    this->m_yVelocity += 0.02;
 
-    std::list<CEntity*>* ents = m_gameScreen->getVisibleEntities();
+    std::list<CEntity*>* ents = this->m_gameScreen->getVisibleEntities();
     std::list<CEntity*>::iterator i;
-    for(i = ents->begin(); i != ents->end(); i++) {
-        if ((*i) == this || (*i) == m_player) continue;
-        bool isColliding = this->isColliding((*i), this->getPosX() + m_xVelocity, 
-                this->getPosY());
+    for (i = ents->begin(); i != ents->end(); i++) {
+        if ((*i) == this || (*i) == this->m_player) {
+			continue;
+		}
+        bool isColliding = this->isColliding((*i), this->getPosX() + this->m_xVelocity, this->getPosY());
         if (isColliding) {
             (*i)->hurt(5);
-            m_shouldRemove = true;
+            this->m_shouldRemove = true;
         }
     }
 
-    m_ticksAlive++;
-    if (m_ticksAlive > 60 * 2) {
-        m_shouldRemove = true;
+    if (++this->m_ticksAlive > 60 * 2) {
+        this->m_shouldRemove = true;
     }
 }
 
 int CSandBall::getPosX() {
-    return (int) m_posX;
+    return static_cast<int>(this->m_posX);
 }
 
 int CSandBall::getPosY() {
-    return (int) m_posY;
+    return static_cast<int>(this->m_posY);
 }
 
 bool CSandBall::isColliding(CEntity* ent, int x, int y) {
@@ -57,10 +56,5 @@ bool CSandBall::isColliding(CEntity* ent, int x, int y) {
     int entityX = ent->getPosX();
     int entityY = ent->getPosY();
 
-    if (playerX < (entityX + 64) && playerY < (entityY + 64) &&
-            (playerX + 5) > entityX && (playerY + 5) > entityY) {
-        return true;
-    }
-
-    return false;
-}   
+    return (playerX < (entityX + 64) && playerY < (entityY + 64) && (playerX + 5) > entityX && (playerY + 5) > entityY);
+}

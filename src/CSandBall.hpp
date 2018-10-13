@@ -2,17 +2,17 @@
 
 #include "CEntity.hpp"
 
+class CEntity;
 class CGameScreen;
 class CPlayer;
-class CEntity;
 
 class CSandBall : public CEntity {
     public:
         CSandBall(CGameScreen* gameScreen, CPlayer* player);
-        void render(int cameraX, int cameraY);
-        void update();
-        int getPosX();
-        int getPosY();
+        void render(int cameraX, int cameraY) override;
+        void update() override;
+        int getPosX() override;
+        int getPosY() override;
         bool isColliding(CEntity* ent, int x, int y);
 
     private:

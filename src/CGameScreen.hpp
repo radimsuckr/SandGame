@@ -14,7 +14,7 @@ struct Camera {
 
 class CGameScreen : public CScreen {
     public:
-        CGameScreen(CMainWindow* mainWindow, CScreen* parent = NULL);
+        CGameScreen(CMainWindow* mainWindow, CScreen* parent);
         void render();
         void update();
         std::list<CEntity*>* getVisibleEntities();

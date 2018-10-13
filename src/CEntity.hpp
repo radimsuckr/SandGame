@@ -1,11 +1,9 @@
-#ifndef _CENTITY_H_
-    #define _CENTITY_H_
+#pragma once
 
 class CEntity {
     public:
-        CEntity(int x, int y);
         CEntity();
-        virtual ~CEntity();
+        CEntity(int x, int y);
         virtual int getPosX();
         void setPosX(int x);
         virtual int getPosY();
@@ -26,5 +24,3 @@ class CEntity {
         int m_posX;
         int m_posY;
 };
-
-#endif
