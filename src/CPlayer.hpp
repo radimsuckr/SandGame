@@ -1,8 +1,7 @@
-#ifndef _CPLAYER_H_
-    #define _CPLAYER_H_
+#pragma once
 
+#include "CEntity.hpp"
 #include <vector>
-#include "CEntity.h"
 
 class CEvent;
 class CGameScreen;
@@ -15,12 +14,12 @@ enum {
 
 class CPlayer : public CEntity {
     public:
-        CPlayer( CGameScreen* gameScreen, CEvent* event, int x, int y );
+        CPlayer(CGameScreen* gameScreen, CEvent* event, int x, int y);
         ~CPlayer();
-        void render( int cameraX, int cameraY );
+        void render(int cameraX, int cameraY);
         void update();
         void init();
-        void loadImage( char filename[] );
+        void loadImage(char filename[]);
         void move();
         void jump();
         unsigned char getFacing();
@@ -34,5 +33,3 @@ class CPlayer : public CEntity {
         float m_xVelocity;
         unsigned char m_facing;
 };
-
-#endif

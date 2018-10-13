@@ -1,14 +1,13 @@
-#ifndef _CABOUTSCREEN_H_
-    #define _CABOUTSCREEN_H_
+#pragma once
 
+#include "CScreen.hpp"
 #include <string>
-#include "CScreen.h"
 
 struct ALLEGRO_FONT;
 
 class CAboutScreen : public CScreen {
     public:
-        CAboutScreen( CMainWindow* mainWindow );
+        CAboutScreen(CMainWindow* mainWindow);
         void render();
         void update();
 
@@ -17,5 +16,3 @@ class CAboutScreen : public CScreen {
         ALLEGRO_FONT* m_font;
 
 };
-
-#endif

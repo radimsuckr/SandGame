@@ -1,11 +1,10 @@
-#ifndef _CSCREEN_H_
-    #define _CSCREEN_H_
+#pragma once
 
 class CMainWindow;
 
 class CScreen {
     public:
-        CScreen( CMainWindow* const mainWindow, CScreen* parent = NULL );
+        CScreen(CMainWindow* const mainWindow, CScreen* parent = nullptr);
         CScreen* getParent();
         virtual void render() = 0;
         virtual void update() = 0;
@@ -14,5 +13,3 @@ class CScreen {
         CScreen* m_parent;
         CMainWindow* m_mainWindow;
 };
-
-#endif

@@ -1,8 +1,7 @@
-#ifndef _CGAMESCREEN_H_
-    #define _CGAMESCREEN_H_
+#pragma once
 
+#include "CScreen.hpp"
 #include <list>
-#include "CScreen.h"
 
 class CPlayer;
 class CSpriteSheet;
@@ -15,12 +14,12 @@ struct Camera {
 
 class CGameScreen : public CScreen {
     public:
-        CGameScreen( CMainWindow* mainWindow, CScreen* parent = NULL);
+        CGameScreen(CMainWindow* mainWindow, CScreen* parent = NULL);
         void render();
         void update();
         std::list<CEntity*>* getVisibleEntities();
-        void initMap( char* filename );
-        void addEntity( CEntity* entity );
+        void initMap(char* filename);
+        void addEntity(CEntity* entity);
 
     private:
         int m_rColor;
@@ -30,5 +29,3 @@ class CGameScreen : public CScreen {
         CSpriteSheet* m_spriteSheet;
         ALLEGRO_BITMAP* m_background;
 };
-
-#endif

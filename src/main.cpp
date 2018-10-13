@@ -1,6 +1,6 @@
-#include "CMainWindow.h"
+#include "CMainWindow.hpp"
 
-int main( int argc, char** argv ) {
+int main(int argc, char** argv) {
 
     CMainWindow* window = new CMainWindow();
 

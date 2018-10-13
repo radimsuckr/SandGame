@@ -1,17 +1,16 @@
-#ifndef _CWATERBLOB_H_
-    #define _CWATERBLOB_H_
+#pragma once
 
-#include "CEntity.h"
+#include "CEntity.hpp"
 
 class CGameScreen;
 
 class CWaterBlob : public CEntity {
     public:
-        CWaterBlob( CGameScreen* gameScreen, int x, int y );
-        void render( int cameraX, int cameraY );
+        CWaterBlob(CGameScreen* gameScreen, int x, int y);
+        void render(int cameraX, int cameraY);
         void update();
         void move();
-        void hurt( int damage );
+        void hurt(int damage);
 
     private:
         ALLEGRO_BITMAP* m_image;
@@ -23,5 +22,3 @@ class CWaterBlob : public CEntity {
         int m_radius;
         int m_hurtTime;
 };
-
-#endif

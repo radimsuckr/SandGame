@@ -3,19 +3,19 @@
 
 class CEntity {
     public:
-        CEntity( int x, int y );
+        CEntity(int x, int y);
         CEntity();
         virtual ~CEntity();
         virtual int getPosX();
-        void setPosX( int x );
+        void setPosX(int x);
         virtual int getPosY();
-        void setPosY( int y );
-        virtual void render( int cameraX, int cameraY ) = 0;
+        void setPosY(int y);
+        virtual void render(int cameraX, int cameraY) = 0;
         virtual void update() = 0;
-        bool isColliding( CEntity* entity, int x, int y );
+        bool isColliding(CEntity* entity, int x, int y);
         bool isReadyToRemove();
         bool canCollide();
-        virtual void hurt( int damage );
+        virtual void hurt(int damage);
 
     protected:
         bool m_shouldRemove;

@@ -14,12 +14,12 @@ struct Key {
 
 class CEvent {  
     public:
-        CEvent( CMainWindow* mainWindow );
+        CEvent(CMainWindow* mainWindow);
         ALLEGRO_EVENT_QUEUE* getEventQueue();
         void processEvents();
-        void toggleKey( int keyCode, bool isDown );
-        bool isKeyDown( int keyCode );
-        bool isKeyDownTimed( int keyCode, int msTime = 500 );
+        void toggleKey(int keyCode, bool isDown);
+        bool isKeyDown(int keyCode);
+        bool isKeyDownTimed(int keyCode, int msTime = 500);
 
     private:
         ALLEGRO_EVENT_QUEUE* m_eventQueue;

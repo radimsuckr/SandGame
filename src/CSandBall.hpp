@@ -1,7 +1,6 @@
-#ifndef _CSANDBALL_H_
-    #define _CSANDBALL_H_
+#pragma once
 
-#include "CEntity.h"
+#include "CEntity.hpp"
 
 class CGameScreen;
 class CPlayer;
@@ -9,12 +8,12 @@ class CEntity;
 
 class CSandBall : public CEntity {
     public:
-        CSandBall( CGameScreen* gameScreen, CPlayer* player );
-        void render( int cameraX, int cameraY );
+        CSandBall(CGameScreen* gameScreen, CPlayer* player);
+        void render(int cameraX, int cameraY);
         void update();
         int getPosX();
         int getPosY();
-        bool isColliding( CEntity* ent, int x, int y );
+        bool isColliding(CEntity* ent, int x, int y);
 
     private:
         float m_posX;
@@ -25,5 +24,3 @@ class CSandBall : public CEntity {
         CGameScreen* m_gameScreen;
         CPlayer* m_player;
 };
-
-#endif

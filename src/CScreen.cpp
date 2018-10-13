@@ -1,7 +1,7 @@
+#include "CScreen.hpp"
 #include <allegro5/allegro.h>
-#include "CScreen.h"
 
-CScreen::CScreen( CMainWindow* const mainWindow, CScreen* parent ) {
+CScreen::CScreen(CMainWindow* const mainWindow, CScreen* parent) {
     m_mainWindow = mainWindow;
     m_parent = parent;
 }

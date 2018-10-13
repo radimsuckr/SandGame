@@ -20,7 +20,7 @@ class CMainWindow {
         CEvent* getEvent();
         ALLEGRO_DISPLAY* getDisplay();
         double  getMiliseconds();
-        void changeScreenTo( int screenCode );
+        void changeScreenTo(int screenCode);
 
     private:
         bool m_isRunning;

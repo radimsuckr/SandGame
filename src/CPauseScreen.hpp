@@ -1,14 +1,14 @@
-#ifndef _CPAUSESCREEN_H_
-    #define _CPAUSESCREEN_H_
+#pragma once
 
+#include "CScreen.hpp"
+#include <allegro5/allegro_font.h>
 #include <string>
-#include "CScreen.h"
 
 class CMainWindow;
 
 class CPauseScreen : public CScreen {
     public:
-        CPauseScreen( CMainWindow* mainWindow, CScreen* parent );
+        CPauseScreen(CMainWindow* mainWindow, CScreen* parent);
         void render();
         void update();
 
@@ -17,5 +17,3 @@ class CPauseScreen : public CScreen {
         ALLEGRO_FONT* m_font;
         char m_selectedOption;
 };
-
-#endif
