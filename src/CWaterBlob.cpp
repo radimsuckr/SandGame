@@ -6,7 +6,7 @@
 #include <vector>
 
 CWaterBlob::CWaterBlob(CGameScreen* gameScreen, int x, int y) : CEntity(x, y) {
-    m_image = al_load_bitmap("waterblob.png");
+    m_image = al_load_bitmap("res/waterblob.png");
     m_frame = 0;
     m_centerX = x;
     m_xVelocity = 3;

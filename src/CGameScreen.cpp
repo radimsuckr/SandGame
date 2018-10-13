@@ -11,16 +11,15 @@
 #include <iostream>
 #include <string>
 
-CGameScreen::CGameScreen(CMainWindow* const mainWindow, CScreen* parent) 
-    : CScreen(mainWindow, parent) {
+CGameScreen::CGameScreen(CMainWindow* const mainWindow, CScreen* parent)  : CScreen(mainWindow, parent) {
     m_rColor = 0;
     m_player = new CPlayer(this, m_mainWindow->getEvent(), 700, 0);
     m_cameraControl = new Camera;
     m_cameraControl->posX = m_player->getPosX() - 32;
-    m_spriteSheet = new CSpriteSheet("spritesheet.png");
+    m_spriteSheet = new CSpriteSheet("res/spritesheet.png");
     m_entities = new std::list<CEntity*>();
-    this->initMap("level01.map");
-    m_background = al_load_bitmap("background.png");
+    this->initMap("res/level01.map");
+    m_background = al_load_bitmap("res/background.png");
 }
 
 void CGameScreen::initMap(char* filename) {

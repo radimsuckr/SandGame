@@ -1,8 +1,8 @@
 #include "CMainWindow.hpp"
+#include <memory>
 
-int main(int argc, char** argv) {
-
-    CMainWindow* window = new CMainWindow();
+int main() {
+	std::unique_ptr<CMainWindow> window(new CMainWindow());
 
     return window->execute();
 }

@@ -4,7 +4,7 @@
 
 class CSpriteSheet {
     public:
-        explicit CSpriteSheet(char* filename);
+        explicit CSpriteSheet(const char* filename);
         ALLEGRO_BITMAP* getSprite(int x, int y);
 
     private:

@@ -1,9 +1,9 @@
 #include "CSpriteSheet.hpp"
 #include <iostream>
 
-CSpriteSheet::CSpriteSheet(char* filename) {
+CSpriteSheet::CSpriteSheet(const char* filename) {
     m_spriteSheet = al_load_bitmap(filename);
-    if (m_spriteSheet == NULL) {
+    if (m_spriteSheet == nullptr) {
         std::cerr << "Can not load sprite sheet (" << filename << ")." << std::endl;
     }
 }

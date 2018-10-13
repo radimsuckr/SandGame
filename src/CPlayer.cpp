@@ -10,7 +10,7 @@
 CPlayer::CPlayer(CGameScreen* gameScreen, CEvent* event, int x, int y) : CEntity(x, y) {
     m_event = event;
     m_gameScreen = gameScreen;
-    this->loadImage("player.png");
+    this->loadImage("res/player.png");
     m_frame = 0;
     m_yVelocity = 0;
     m_xVelocity = 0;
@@ -22,7 +22,7 @@ CPlayer::~CPlayer() {
 }
 
 void CPlayer::loadImage(char filename[]) {
-    m_image = al_load_bitmap("player.png");
+    m_image = al_load_bitmap("res/player.png");
 
     if (m_image == NULL) {
         std::cerr << "Can not load player image." << std::endl;
@@ -33,7 +33,7 @@ void CPlayer::render(int cameraX, int cameraY) {
     int x = this->getPosX();
     int y = this->getPosY();
 
-    ALLEGRO_BITMAP* subImage = al_create_sub_bitmap(m_image, 64 * (int) m_frame, 0, 64, 64);
+    ALLEGRO_BITMAP* subImage = al_create_sub_bitmap(m_image, (int) m_frame * 64, 0, 64, 64);
     al_draw_bitmap(subImage, x - cameraX, y - cameraY, 0);
 }
 
